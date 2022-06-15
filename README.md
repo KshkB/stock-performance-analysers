@@ -18,7 +18,7 @@ Each module in this repository is set to run in the *sandbox environment*. This 
 
 In order to run the modules in this repository on *real world data* you need to: 
 
-- comment out the line `os.environ['IEX_API_VERSION'] = 'iexcloud-sandbox'` in the modules `totalreturns.py`, headtohead.py` and `distribution.py`;
+- comment out the line `os.environ['IEX_API_VERSION'] = 'iexcloud-sandbox'` in the modules `totalreturns.py`, `headtohead.py` and `distribution.py`;
 - in the `totalReturns` method in the module `totalreturns.py`, replace all instances of `token=IEX_CLOUD_SANDBOX` with `token=IEX_CLOUD_API_TOKEN`;
 - in the `headTohead` method in the module `headtohead.py`, replace all instances of `token=IEX_CLOUD_SANDBOX` with `token=IEX_CLOUD_API_TOKEN`;
 - in the `distribution` method in the module `distribution.py`, replace all instances of `token=IEX_CLOUD_SANDBOX` with `token=IEX_CLOUD_API_TOKEN`.
@@ -36,9 +36,9 @@ Option 1 runs `totalreturns.py`. This module calculates, for a list of *US stock
 
 ### Head to head
 
-Option 2 runs `headtohead.py`. This module takes in two stocks `s_A`, `s_B`, a time range $(t_0, t_1)$ and an regular period $P$ serving to divide the time range $(t_0, t_1)$ into $P$-many time periods. E.g., if $P = 2$ then $(t_0, t_1)$ is divided into $P=2$ periods: $(t_0, p), (p, t_1)$ where $p$ is a date halfway between $t_0$ and $t_1$. 
+Option 2 runs `headtohead.py`. This module takes in two stocks `s_A`, `s_B`, a time range $(t_0, t_1)$ and a regular period $P$ serving to divide the time range into $P$-many time *periods*. E.g., if $P$ is $2$, then the time range is divided into $2$ periods: $t_0$ to $p$ and $p$ to $t_1$, where $p$ is a date between $t_0$ and $t_1$.
 
-The objective of `headtohead.py` is to calculate, with respect to total returns for each stock `s_A`, `s_B` over each time period in the time range, when `s_A` returned more than `s_B` and vice-versa. The module `headtohead.py` returns the percentage of time `s_A` outperformed `s_B` and vice-versa.
+The objective of the method `headTohead()` in `headtohead.py` is to calculate, with respect to total returns for each stock `s_A`, `s_B` over each time period in the time range, when `s_A` returned more than `s_B` and vice-versa. The method `headTohead()` returns the percentage of time `s_A` outperformed `s_B` and vice-versa.
 
 ### Distribution
 
